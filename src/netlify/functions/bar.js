@@ -3,14 +3,34 @@
 import * as Curry from "rescript/lib/es6/curry.js";
 import * as Faunadb from "../../faunadb.js";
 
-async function handler(param) {
-  var q = Curry._2(Faunadb.query.Create, Curry._1(Faunadb.query.Ref, "classes/todo"), {
-        data: {
-          title: "working!"
-        }
+async function handler($$event) {
+  var createQuery = function (t) {
+    return Curry._2(Faunadb.query.Create, Curry._1(Faunadb.query.Ref, "classes/todo"), {
+                data: t
+              });
+  };
+  var match = $$event.body;
+  if (match === undefined) {
+    return {
+            statusCode: 400,
+            body: JSON.stringify({
+                  error: "body missing text"
+                })
+          };
+  }
+  var a = match.title;
+  if (a === undefined) {
+    return {
+            statusCode: 400,
+            body: JSON.stringify({
+                  error: "body missing text"
+                })
+          };
+  }
+  var query = createQuery({
+        title: a
       });
-  console.log(q);
-  var res = await Faunadb.client.query(q);
+  var res = await Faunadb.client.query(query);
   return {
           statusCode: 200,
           body: JSON.stringify(res)
