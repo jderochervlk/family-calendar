@@ -11,6 +11,6 @@ let handler = async (event: event, _context) => {
 
   {
     "statusCode": 200,
-    "body": "foo bar",
+    "body": JSON.stringifyAny(res),
   }
 }
