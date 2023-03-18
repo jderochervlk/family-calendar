@@ -9,6 +9,7 @@ async function handler($$event) {
                 data: t
               });
   };
+  console.log($$event);
   var match = $$event.body;
   if (match === undefined) {
     return {

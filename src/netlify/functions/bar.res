@@ -5,6 +5,8 @@ let handler = async (event: event) => {
   let createQuery = (t: Faunadb.item) =>
     Faunadb.query["Create"](Faunadb.query["Ref"]("classes/todo"), {data: t})
 
+  Console.log(event)
+
   switch event {
   | {body: Some({title: Some(a)})} => {
       let query = createQuery({title: a})
