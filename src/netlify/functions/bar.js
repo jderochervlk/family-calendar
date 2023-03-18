@@ -7,7 +7,7 @@ async function handler($$event, _context) {
   var q = Curry._2(Faunadb.query.Create, Curry._1(Faunadb.query.Ref, "classes/todo"), {
         title: "foo"
       });
-  var res = Curry._1(Faunadb.client.query, q);
+  var res = await Curry._1(Faunadb.client.query, q);
   return {
           statusCode: 200,
           body: JSON.stringify(res)

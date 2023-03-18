@@ -7,7 +7,7 @@ let handler = async (event: event, _context) => {
 
   let q = Faunadb.query["Create"](Faunadb.query["Ref"]("classes/todo"), {title: "foo"})
 
-  let res = Faunadb.client.query(q)
+  let res = await Faunadb.client.query(q)
 
   {
     "statusCode": 200,
