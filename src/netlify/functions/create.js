@@ -28,6 +28,9 @@ exports.handler = async (event, context) => {
     const todos = await getCollection();
     const body = { id: "foo-bar-101" };
 
+    console.log(todos)
+    console.log(body)
+
     try {
         const res = await todos.create(body.id, "hey there!")
         return {
