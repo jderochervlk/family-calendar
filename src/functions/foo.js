@@ -2,9 +2,8 @@
 
 
 async function handler($$event, _context) {
-  console.log($$event.queryStringParameters);
-  var a = $$event.queryStringParameters.name;
-  var message = a !== undefined ? "Hello " + a : "No parameter for name was found";
+  var name = $$event.queryStringParameters.name;
+  var message = name !== undefined ? "Hello " + name : "No parameter for name was found";
   return {
           statusCode: 200,
           body: JSON.stringify({
