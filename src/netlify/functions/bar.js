@@ -2,8 +2,6 @@
 
 import * as Curry from "rescript/lib/es6/curry.js";
 import * as Faunadb from "../../faunadb.js";
-import * as Js_json from "rescript/lib/es6/js_json.js";
-import * as Caml_option from "rescript/lib/es6/caml_option.js";
 
 async function handler($$event) {
   var createQuery = function (t) {
@@ -11,16 +9,8 @@ async function handler($$event) {
                 data: t
               });
   };
-  var body = Js_json.decodeObject($$event.body);
-  if (body === undefined) {
-    return {
-            statusCode: 400,
-            body: JSON.stringify({
-                  error: "body isn't valid JSON."
-                })
-          };
-  }
-  var query = createQuery(Caml_option.valFromOption(body));
+  var b = JSON.parse($$event.body);
+  var query = createQuery(b);
   var res = await Faunadb.client.query(query);
   return {
           statusCode: 200,
