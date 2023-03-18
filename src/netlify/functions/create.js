@@ -41,7 +41,7 @@ exports.handler = async (event, context) => {
             },
         };
     } catch (e) {
-        console.log(e)
+        console.log(JSON.stringify(e))
         return {
             statusCode: 400,
             body: JSON.stringify(e),
