@@ -4,18 +4,19 @@ import * as Curry from "rescript/lib/es6/curry.js";
 import * as Faunadb from "../../faunadb.js";
 
 async function handler($$event, _context) {
-  var q = Curry._2(Faunadb.query.Create, Curry._1(Faunadb.query.Ref, "classes/todo"), {
-    title: "foo"
-  });
+  var q = await Curry._2(Faunadb.query.Create, Curry._1(Faunadb.query.Ref, "classes/todo"), {
+        title: "foo"
+      });
+  console.log(q);
   var res = await Curry._1(Faunadb.client.query, q);
-  console.log(res());
+  console.log(res);
   return {
-    statusCode: 200,
-    body: JSON.stringify(res())
-  };
+          statusCode: 200,
+          body: JSON.stringify(res)
+        };
 }
 
 export {
-  handler,
+  handler ,
 }
 /* Faunadb Not a pure module */

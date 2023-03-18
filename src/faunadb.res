@@ -5,7 +5,7 @@ type clientOptions = {secret: string}
 type query
 type ref
 type i = {title: string}
-type dbquery = {"Ref": string => ref, "Create": (ref, i) => query}
+type dbquery = {"Ref": string => ref, "Create": (ref, i) => promise<query>}
 @module("faunadb") external dbquery: dbquery = "query"
 
 type t
