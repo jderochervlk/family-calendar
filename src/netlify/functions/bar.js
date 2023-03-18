@@ -4,10 +4,10 @@ import * as Curry from "rescript/lib/es6/curry.js";
 import * as Faunadb from "../../faunadb.js";
 
 async function handler($$event, _context) {
-  var res = await Curry._2(Faunadb.query.Create, Curry._1(Faunadb.query.Ref, "classes/todo"), {
+  var q = Curry._2(Faunadb.query.Create, Curry._1(Faunadb.query.Ref, "classes/todo"), {
         title: "foo"
       });
-  console.log(res);
+  var res = Curry._1(Faunadb.client.query, q);
   return {
           statusCode: 200,
           body: JSON.stringify(res)
