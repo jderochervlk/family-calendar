@@ -11,7 +11,7 @@ exports.handler = async () => {
     serverApi: ServerApiVersion.v1,
   });
 
-  client
+  await client
     .connect((err) => {
       const collection = client.db("test").collection("devices");
       // perform actions on the collection object
@@ -26,6 +26,6 @@ exports.handler = async () => {
     .catch(console.error);
 
   return {
-    status: 200,
+    statusCode: 200,
   };
 };
