@@ -1,5 +1,3 @@
-// let handler = query["Create"](query["Ref"]("foo"), {title: "foo"})
-
 type event = {path: string, queryStringParameters: {"name": option<string>}}
 
 let handler = async (event: event, _context) => {
