@@ -8,6 +8,7 @@ async function handler($$event, _context) {
         title: "foo"
       });
   var res = await Curry._1(Faunadb.client.query, q);
+  console.log(res);
   return {
           statusCode: 200,
           body: JSON.stringify(res)

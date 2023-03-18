@@ -9,6 +9,8 @@ let handler = async (event: event, _context) => {
 
   let res = await Faunadb.client.query(q)
 
+  Console.log(res)
+
   {
     "statusCode": 200,
     "body": JSON.stringifyAny(res),
