@@ -1,24 +1,15 @@
-type body = {title: option<string>}
-type event = {path: string, body: option<body>}
+type event = {path: string, body: string}
 
 let handler = async (event: event) => {
-  let createQuery = (t: Faunadb.item) =>
+  let createQuery = (t: JSON.t) =>
     Faunadb.query["Create"](Faunadb.query["Ref"]("classes/todo"), {data: t})
 
-  Console.log(event)
+  let b = JSON.parseExn(event.body)
 
-  switch event {
-  | {body: Some({title: Some(a)})} => {
-      let query = createQuery({title: a})
-      let res = await Faunadb.client.query(. query)
-      {
-        "statusCode": 200,
-        "body": JSON.stringifyAny(res),
-      }
-    }
-  | _ => {
-      "statusCode": 400,
-      "body": JSON.stringifyAny({"error": "body missing text"}),
-    }
+  let query = createQuery(b)
+  let res = await Faunadb.client.query(. query)
+  {
+    "statusCode": 200,
+    "body": JSON.stringifyAny(res),
   }
 }

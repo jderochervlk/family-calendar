@@ -9,28 +9,8 @@ async function handler($$event) {
                 data: t
               });
   };
-  console.log($$event);
-  var match = $$event.body;
-  if (match === undefined) {
-    return {
-            statusCode: 400,
-            body: JSON.stringify({
-                  error: "body missing text"
-                })
-          };
-  }
-  var a = match.title;
-  if (a === undefined) {
-    return {
-            statusCode: 400,
-            body: JSON.stringify({
-                  error: "body missing text"
-                })
-          };
-  }
-  var query = createQuery({
-        title: a
-      });
+  var b = JSON.parse($$event.body);
+  var query = createQuery(b);
   var res = await Faunadb.client.query(query);
   return {
           statusCode: 200,
