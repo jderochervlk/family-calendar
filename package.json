@@ -12,6 +12,7 @@
   "license": "ISC",
   "dependencies": {
     "@rescript/core": "^0.2.0",
+    "mongodb": "^5.1.0",
     "rescript": "^10.1.3"
   }
 }
