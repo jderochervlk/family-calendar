@@ -2,7 +2,7 @@
 
 import * as Curry from "rescript/lib/es6/curry.js";
 import * as Faunadb from "../../faunadb.js";
-import * as Core__JSON from "@rescript/core/src/Core__JSON.js";
+import * as Js_json from "rescript/lib/es6/js_json.js";
 import * as Caml_option from "rescript/lib/es6/caml_option.js";
 
 async function handler($$event) {
@@ -11,7 +11,7 @@ async function handler($$event) {
                 data: t
               });
   };
-  var body = Core__JSON.Decode.object($$event.body);
+  var body = Js_json.decodeObject($$event.body);
   if (body === undefined) {
     return {
             statusCode: 400,

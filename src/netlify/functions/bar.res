@@ -3,7 +3,7 @@ type event = {path: string, body: JSON.t}
 let handler = async (event: event) => {
   let createQuery = t => Faunadb.query["Create"](Faunadb.query["Ref"]("classes/todo"), {data: t})
 
-  let body = JSON.Decode.object(event.body)
+  let body = Js.Json.decodeObject(event.body)
 
   switch body {
   | Some(b) => {
