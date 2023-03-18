@@ -3,7 +3,7 @@
 import * as Faunadb from "faunadb";
 
 var client = new Faunadb.Client({
-      secret: process.env.FAUNADB_SERVER_SECRET
+      secret: "fnAE_XRDsoAAVm3S7kTRu18tPSPK9FcZxb1zPve6"
     });
 
 var query = Faunadb.query;
