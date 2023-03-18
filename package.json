@@ -11,6 +11,8 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@astrajs/collections": "^0.3.4",
+    "@astrajs/rest": "^0.3.4",
     "@rescript/core": "^0.2.0",
     "rescript": "^10.1.3"
   }
