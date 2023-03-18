@@ -4,13 +4,14 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-      "res:build": "rescript",
-      "res:dev": "rescript build -w"
+    "res:build": "rescript",
+    "res:dev": "rescript build -w"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@rescript/core": "^0.2.0",
     "rescript": "^10.1.3"
   }
 }

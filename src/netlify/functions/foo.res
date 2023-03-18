@@ -1,12 +1,16 @@
 type event = {path: string, queryStringParameters: {"name": option<string>}}
 
 let handler = async (event: event, _context) => {
-  let message = switch event.queryStringParameters["name"] {
-  | Some(name) => "Hello " ++ name
-  | None => "No parameter for name was found"
-  }
-  {
-    "statusCode": 200,
-    "body": Js.Json.stringifyAny({"message": message}),
+  let message = event.queryStringParameters["name"]->Option.map(String.toUpperCase)
+
+  switch message {
+  | Some(name) => {
+      "statusCode": 200,
+      "body": Js.Json.stringifyAny({"message": "Hello " ++ name}),
+    }
+  | None => {
+      "statusCode": 200,
+      "body": Js.Json.stringifyAny({"message": "No name was provided :("}),
+    }
   }
 }
