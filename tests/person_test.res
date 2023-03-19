@@ -1,6 +1,6 @@
 open Zora
 
-let expected: Person.person = {
+let expected: Data.person = {
   id: 1,
   firstName: "John",
   lastName: "Doe",

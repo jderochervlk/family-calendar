@@ -18,8 +18,14 @@ async function handler($$event) {
                 data: t
               });
   };
-  var b = JSON.parse($$event.body);
-  var query = createQuery(b);
+  var b = S$ReScriptStruct.parseWith($$event.body, personStruct);
+  if (b.TAG !== /* Ok */0) {
+    return {
+            statusCode: 400,
+            body: JSON.stringify(b._0)
+          };
+  }
+  var query = createQuery(b._0);
   var res = await Faunadb.client.query(query);
   return {
           statusCode: 200,

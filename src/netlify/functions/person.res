@@ -1,8 +1,4 @@
-type person = {
-  id: int,
-  firstName: string,
-  lastName: string,
-}
+open Data
 
 let personStruct = S.object(o => {
   id: o->S.field("Id", S.int()),
@@ -13,15 +9,15 @@ let personStruct = S.object(o => {
 type event = {path: string, body: string}
 
 let handler = async (event: event) => {
-  let createQuery = (t: JSON.t) =>
+  let createQuery = (t: person) =>
     Faunadb.query["Create"](Faunadb.query["Ref"]("classes/person"), {data: t})
 
   let b = event.body->S.parseWith(personStruct)
 
-  let query = createQuery(b)
-  switch query {
-  | Belt.Result.OK(data) => {
-      let res = await Faunadb.client.query(. data)
+  switch b {
+  | Belt.Result.Ok(data) => {
+      let query = createQuery(data)
+      let res = await Faunadb.client.query(. query)
       {
         "statusCode": 200,
         "body": JSON.stringifyAny(res),
