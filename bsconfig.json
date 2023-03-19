@@ -3,7 +3,13 @@
   "sources": [
     {
       "dir": "src",
-      "subdirs": true
+      "subdirs": true,
+      "public": "all"
+    },
+    {
+      "dir": "tests",
+      "subdirs": true,
+      "type": "dev"
     }
   ],
   "package-specs": [
@@ -12,7 +18,12 @@
       "in-source": true
     }
   ],
-  "suffix": ".js",
-  "bs-dependencies": ["@rescript/core"],
-  "bsc-flags": ["-open RescriptCore"]
+  "suffix": ".mjs",
+  "bs-dependencies": [
+    "@rescript/core",
+    "@dusty-phillips/rescript-zora",
+    "rescript-struct"
+  ],
+  "bs-dev-dependencies": [],
+  "bsc-flags": ["-open RescriptCore", "-open ReScriptStruct"]
 }
