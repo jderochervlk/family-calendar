@@ -4,8 +4,7 @@ type clientOptions = {secret: string}
 
 type query
 type ref
-type i = {data: JSON.t}
-type dbquery = {"Ref": string => ref, "Create": (ref, i) => query}
+type dbquery = {"Ref": string => ref, "Create": (ref, Person.person) => query}
 @module("faunadb") external dbquery: dbquery = "query"
 
 type t
