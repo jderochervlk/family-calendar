@@ -1,9 +1,11 @@
 open Data
 
-let personStruct = S.object(o => {
-  id: o->S.field("Id", S.int()),
-  firstName: o->S.field("FirstName", S.string()),
-  lastName: o->S.field("LastName", S.string()),
+open ReScriptStruct.S
+
+let personStruct = object(o => {
+  id: o->field("Id", int()),
+  firstName: o->field("FirstName", string()),
+  lastName: o->field("LastName", string()),
 })
 
 type event = {path: string, body: string}
@@ -12,20 +14,20 @@ let handler = async (event: event) => {
   let createQuery = (t: person) =>
     Faunadb.query["Create"](Faunadb.query["Ref"]("classes/person"), {data: t})
 
-  let b = event.body->S.parseWith(personStruct)
+  let b = event.body->parseWith(personStruct)
 
   switch b {
-  | Belt.Result.Ok(data) => {
+  | Ok(data) => {
       let query = createQuery(data)
       let res = await Faunadb.client.query(. query)
       {
         "statusCode": 200,
-        "body": JSON.stringifyAny(res),
+        "body": res->JSON.stringifyAny,
       }
     }
-  | Belt.Result.Error(err) => {
+  | Error(err) => {
       "statusCode": 400,
-      "body": JSON.stringifyAny(err),
+      "body": err->Error.toString->Some,
     }
   }
 }

@@ -1,4 +1,5 @@
 open Zora
+open ReScriptStruct.S
 
 let expected: Data.person = {
   id: 1,
@@ -7,6 +8,6 @@ let expected: Data.person = {
 }
 
 zoraBlock("should parse good data", t => {
-  let result = MockPerson.mock->S.parseWith(Person.personStruct)
+  let result = MockPerson.mock->parseWith(Person.personStruct)
   t->equal(result, Belt.Result.Ok(expected), "Should be a tasty dessert")
 })

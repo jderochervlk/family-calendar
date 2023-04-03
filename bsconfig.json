@@ -14,7 +14,7 @@
   ],
   "package-specs": [
     {
-      "module": "es6",
+      "module": "commonjs",
       "in-source": true
     }
   ],
@@ -22,8 +22,9 @@
   "bs-dependencies": [
     "@rescript/core",
     "@dusty-phillips/rescript-zora",
-    "rescript-struct"
+    "rescript-struct",
+    "rescript-envsafe"
   ],
   "bs-dev-dependencies": [],
-  "bsc-flags": ["-open RescriptCore", "-open ReScriptStruct"]
+  "bsc-flags": ["-open RescriptCore"]
 }
