@@ -1,5 +1,6 @@
 {
   "name": "jvlk-api",
+  "jsx": { "version": 4, "mode": "automatic" },
   "sources": [
     {
       "dir": "src",
@@ -20,6 +21,7 @@
   ],
   "suffix": ".js",
   "bs-dependencies": [
+    "@rescript/react",
     "@rescript/core",
     "@dusty-phillips/rescript-zora",
     "rescript-struct",
