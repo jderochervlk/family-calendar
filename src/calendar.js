@@ -12,7 +12,12 @@ function Calendar(props) {
               data: [{
                   startDate: "2018-11-01T09:45",
                   endDate: "2018-11-01T11:00",
-                  title: "Meeting"
+                  title: "Meeting",
+                  members: [
+                    1,
+                    2
+                  ],
+                  id: 1
                 }],
               children: [
                 JsxRuntime.jsx(DxReactScheduler.ViewState, {

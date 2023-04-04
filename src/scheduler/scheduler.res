@@ -1,4 +1,4 @@
-type entry = {startDate: string, endDate: string, title: string}
+type entry = {startDate: string, endDate: string, title: string, members: array<int>, id: int}
 type data = array<entry>
 
 @module("@devexpress/dx-react-scheduler-material-ui") @react.component
