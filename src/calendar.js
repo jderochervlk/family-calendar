@@ -2,6 +2,7 @@
 'use strict';
 
 var JsxRuntime = require("react/jsx-runtime");
+var DxReactGrid = require("@devexpress/dx-react-grid");
 var DxReactScheduler = require("@devexpress/dx-react-scheduler");
 var DxReactSchedulerMaterialUi = require("@devexpress/dx-react-scheduler-material-ui");
 
@@ -27,7 +28,24 @@ function Calendar(props) {
                       startDayHour: 9,
                       endDayHour: 14
                     }),
-                JsxRuntime.jsx(DxReactSchedulerMaterialUi.Appointments, {})
+                JsxRuntime.jsx(DxReactScheduler.GroupingState, {
+                      grouping: [{
+                          resourceName: "members"
+                        }]
+                    }),
+                JsxRuntime.jsx(DxReactSchedulerMaterialUi.Appointments, {}),
+                JsxRuntime.jsx(DxReactSchedulerMaterialUi.Resources, {
+                      mainSourceName: "members",
+                      data: [{
+                          id: 1,
+                          fieldName: "members",
+                          instances: [{
+                              id: 1,
+                              text: "foobar"
+                            }]
+                        }]
+                    }),
+                JsxRuntime.jsx(DxReactGrid.IntegratedGrouping, {})
               ]
             });
 }

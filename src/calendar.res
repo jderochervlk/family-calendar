@@ -14,6 +14,15 @@ let make = () => {
     ]>
     <ViewState currentDate />
     <DayView startDayHour=9 endDayHour=14 />
+    <GroupingState grouping=[{resourceName: "members"}] />
     <Appointments />
+    <Resources
+      mainSourceName="members"
+      data=[{id: 1, fieldName: "members", instances: [{id: 1, text: "foobar"}]}]
+    />
+    <IntegratedGrouping />
+    // <IntegratedEditing />
+
+    // <GroupingPanel />
   </Scheduler>
 }
