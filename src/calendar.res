@@ -17,8 +17,14 @@ let make = () => {
     <GroupingState grouping=[{resourceName: "members"}] />
     <Appointments />
     <Resources
-      mainSourceName="members"
-      data=[{id: 1, fieldName: "members", instances: [{id: 1, text: "foobar"}]}]
+      mainResourceName="members"
+      data=[
+        {
+          fieldName: "members",
+          instances: [{id: 1, text: "foobar"}, {id: 2, text: "josh"}],
+          allowMultiple: true,
+        },
+      ]
     />
     <IntegratedGrouping />
     // <IntegratedEditing />

@@ -35,15 +35,21 @@ function Calendar(props) {
                     }),
                 JsxRuntime.jsx(DxReactSchedulerMaterialUi.Appointments, {}),
                 JsxRuntime.jsx(DxReactSchedulerMaterialUi.Resources, {
-                      mainSourceName: "members",
                       data: [{
-                          id: 1,
                           fieldName: "members",
-                          instances: [{
+                          instances: [
+                            {
                               id: 1,
                               text: "foobar"
-                            }]
-                        }]
+                            },
+                            {
+                              id: 2,
+                              text: "josh"
+                            }
+                          ],
+                          allowMultiple: true
+                        }],
+                      mainResourceName: "members"
                     }),
                 JsxRuntime.jsx(DxReactGrid.IntegratedGrouping, {})
               ]
