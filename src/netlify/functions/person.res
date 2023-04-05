@@ -2,12 +2,6 @@ open Data
 
 open ReScriptStruct
 
-let personStruct = S.object(o => {
-  id: o->S.field("Id", S.int()),
-  firstName: o->S.field("FirstName", S.string()),
-  lastName: o->S.field("LastName", S.string()),
-})
-
 type event = {path: string, body: string}
 
 let handler = async (event: event) => {

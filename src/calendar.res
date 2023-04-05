@@ -40,6 +40,12 @@ let make = () => {
         },
       ]
     />
+    <EditingState
+      onCommitChanges={(~added=None, ~changed=None, ~deleted=None, ()) => {
+        Console.log3(added, changed, deleted)
+        None
+      }}
+    />
     <ViewState currentDate />
     <DayView startDayHour=7 endDayHour=23 intervalCount=1 />
     <Appointments />
@@ -59,8 +65,10 @@ let make = () => {
       ]
     />
     <IntegratedGrouping />
-    // <IntegratedEditing />
-
+    <IntegratedEditing />
+    <AppointmentTooltip showOpenButton=true />
+    <AppointmentForm />
     <GroupingPanel />
+    <DragDropProvider />
   </Scheduler>
 }

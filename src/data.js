@@ -6,10 +6,27 @@ var S$ReScriptStruct = require("rescript-struct/src/S.js");
 var personStruct = S$ReScriptStruct.object(function (o) {
       return {
               id: S$ReScriptStruct.field(o, "Id", S$ReScriptStruct.$$int(undefined)),
-              firstName: S$ReScriptStruct.field(o, "FirstName", S$ReScriptStruct.string(undefined)),
-              lastName: S$ReScriptStruct.field(o, "LastName", S$ReScriptStruct.string(undefined))
+              name: S$ReScriptStruct.field(o, "Name", S$ReScriptStruct.string(undefined))
+            };
+    });
+
+var appointmentStruct = S$ReScriptStruct.object(function (o) {
+      return {
+              startDate: S$ReScriptStruct.field(o, "StartDate", S$ReScriptStruct.string(undefined)),
+              endDate: S$ReScriptStruct.field(o, "EndDate", S$ReScriptStruct.string(undefined)),
+              title: S$ReScriptStruct.field(o, "Title", S$ReScriptStruct.string(undefined)),
+              people: S$ReScriptStruct.field(o, "People", S$ReScriptStruct.array(S$ReScriptStruct.$$int(undefined))),
+              id: S$ReScriptStruct.field(o, "Id", S$ReScriptStruct.$$int(undefined))
+            };
+    });
+
+var groupingStruct = S$ReScriptStruct.object(function (o) {
+      return {
+              resourceName: S$ReScriptStruct.field(o, "resourceName", S$ReScriptStruct.string(undefined))
             };
     });
 
 exports.personStruct = personStruct;
+exports.appointmentStruct = appointmentStruct;
+exports.groupingStruct = groupingStruct;
 /* personStruct Not a pure module */
