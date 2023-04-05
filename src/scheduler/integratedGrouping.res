@@ -1,2 +1,2 @@
-@module("@devexpress/dx-react-grid") @react.component
+@module("@devexpress/dx-react-scheduler") @react.component
 external make: unit => React.element = "IntegratedGrouping"

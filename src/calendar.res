@@ -7,21 +7,53 @@ let make = () => {
       {
         startDate: "2018-11-01T09:45",
         endDate: "2018-11-01T11:00",
-        title: "Meeting",
-        members: [1, 2],
+        title: "Take out trash",
+        people: [2],
+        id: 1,
+      },
+      {
+        startDate: "2018-11-01T09:45",
+        endDate: "2018-11-01T12:00",
+        title: "Work",
+        people: [1],
+        id: 2,
+      },
+      {
+        startDate: "2018-11-01T08:30",
+        endDate: "2018-11-01T15:30",
+        title: "School",
+        people: [3],
+        id: 3,
+      },
+      {
+        startDate: "2018-11-01T09:00",
+        endDate: "2018-11-01T14:00",
+        title: "Daycare",
+        people: [4],
         id: 1,
       },
     ]>
+    <GroupingState
+      grouping=[
+        {
+          resourceName: "people",
+        },
+      ]
+    />
     <ViewState currentDate />
-    <DayView startDayHour=9 endDayHour=14 />
-    <GroupingState grouping=[{resourceName: "members"}] />
+    <DayView startDayHour=7 endDayHour=23 intervalCount=1 />
     <Appointments />
     <Resources
-      mainResourceName="members"
+      mainResourceName="people"
       data=[
         {
-          fieldName: "members",
-          instances: [{id: 1, text: "foobar"}, {id: 2, text: "josh"}],
+          fieldName: "people",
+          instances: [
+            {id: 1, text: "Roxane"},
+            {id: 2, text: "Josh"},
+            {id: 3, text: "Ellie"},
+            {id: 4, text: "Logan"},
+          ],
           allowMultiple: true,
         },
       ]
@@ -29,6 +61,6 @@ let make = () => {
     <IntegratedGrouping />
     // <IntegratedEditing />
 
-    // <GroupingPanel />
+    <GroupingPanel />
   </Scheduler>
 }

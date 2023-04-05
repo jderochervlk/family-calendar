@@ -2,7 +2,6 @@
 'use strict';
 
 var JsxRuntime = require("react/jsx-runtime");
-var DxReactGrid = require("@devexpress/dx-react-grid");
 var DxReactScheduler = require("@devexpress/dx-react-scheduler");
 var DxReactSchedulerMaterialUi = require("@devexpress/dx-react-scheduler-material-ui");
 
@@ -10,48 +9,78 @@ var currentDate = "2018-11-01";
 
 function Calendar(props) {
   return JsxRuntime.jsxs(DxReactSchedulerMaterialUi.Scheduler, {
-              data: [{
+              data: [
+                {
                   startDate: "2018-11-01T09:45",
                   endDate: "2018-11-01T11:00",
-                  title: "Meeting",
-                  members: [
-                    1,
-                    2
-                  ],
+                  title: "Take out trash",
+                  people: [2],
                   id: 1
-                }],
+                },
+                {
+                  startDate: "2018-11-01T09:45",
+                  endDate: "2018-11-01T12:00",
+                  title: "Work",
+                  people: [1],
+                  id: 2
+                },
+                {
+                  startDate: "2018-11-01T08:30",
+                  endDate: "2018-11-01T15:30",
+                  title: "School",
+                  people: [3],
+                  id: 3
+                },
+                {
+                  startDate: "2018-11-01T09:00",
+                  endDate: "2018-11-01T14:00",
+                  title: "Daycare",
+                  people: [4],
+                  id: 1
+                }
+              ],
               children: [
+                JsxRuntime.jsx(DxReactScheduler.GroupingState, {
+                      grouping: [{
+                          resourceName: "people"
+                        }]
+                    }),
                 JsxRuntime.jsx(DxReactScheduler.ViewState, {
                       currentDate: currentDate
                     }),
                 JsxRuntime.jsx(DxReactSchedulerMaterialUi.DayView, {
-                      startDayHour: 9,
-                      endDayHour: 14
-                    }),
-                JsxRuntime.jsx(DxReactScheduler.GroupingState, {
-                      grouping: [{
-                          resourceName: "members"
-                        }]
+                      startDayHour: 7,
+                      endDayHour: 23,
+                      intervalCount: 1
                     }),
                 JsxRuntime.jsx(DxReactSchedulerMaterialUi.Appointments, {}),
                 JsxRuntime.jsx(DxReactSchedulerMaterialUi.Resources, {
                       data: [{
-                          fieldName: "members",
+                          fieldName: "people",
                           instances: [
                             {
                               id: 1,
-                              text: "foobar"
+                              text: "Roxane"
                             },
                             {
                               id: 2,
-                              text: "josh"
+                              text: "Josh"
+                            },
+                            {
+                              id: 3,
+                              text: "Ellie"
+                            },
+                            {
+                              id: 4,
+                              text: "Logan"
                             }
                           ],
                           allowMultiple: true
                         }],
-                      mainResourceName: "members"
+                      mainResourceName: "people"
                     }),
-                JsxRuntime.jsx(DxReactGrid.IntegratedGrouping, {})
+                JsxRuntime.jsx(DxReactScheduler.IntegratedGrouping, {}),
+                JsxRuntime.jsx(DxReactSchedulerMaterialUi.GroupingPanel, {})
               ]
             });
 }
